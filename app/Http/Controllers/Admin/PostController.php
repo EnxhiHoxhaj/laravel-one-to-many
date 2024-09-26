@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Http\Requests\PostsRequest;
+use App\Functions\Helper;
+use Faker\Generator as Faker;
+
+class PostController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $posts= Post::all();
+        return view('admin.post.index', compact('posts'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('admin.post.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(PostsRequest $request, Faker $faker)
+    {
+
+        $data= $request->all();
+        $new_post= new Post();
+        $new_post->slug = Helper::generateSlug($new_post->title, Post::class);
+        $new_post->visit= $faker->numberBetween(0, 0);
+        $new_post->positive_votes= $faker ->numberBetween(0, 0);
+        $new_post->negative_votes= $faker ->numberBetween(0, 0);
+        $new_post->created_at = $faker->dateTimeBetween('-1 year', 'now');
+        $new_post->updated_at = now();
+
+        $new_post-> fill($data);
+        $new_post->save();
+        return redirect()->route('admin.posts.show', $new_post ->id);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $post = Post::find($id);
+        return view('admin.post.show', compact('post'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $edit_post= Post::find($id);
+        return view('admin.post.edit', compact('edit_post'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $data = $request->all();
+        $post = Post::find($id);
+
+        if($data['title'] === $post->title){
+            $data ['slug']= $post->slug;
+        } else {
+            $data['slug'] = Helper::generateSlug($data['title']. Post::class);
+        }
+        $post->update($data);
+
+        return redirect()->route('admin.posts.show', $post);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $post= Post::all();
+        $post= Post:: find($id);
+        $post-> delete();
+        return redirect()->route('admin.posts.index');
+    }
+}
