@@ -77,7 +77,7 @@ class PostController extends Controller
         if($data['title'] === $post->title){
             $data ['slug']= $post->slug;
         } else {
-            $data['slug'] = Helper::generateSlug($data['title']. Post::class);
+            $data['slug'] = Helper::generateSlug($data['title'], Post::class);
         }
         $post->update($data);
 
