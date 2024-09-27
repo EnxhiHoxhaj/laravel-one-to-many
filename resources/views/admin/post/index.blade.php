@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid content">
+    <div class="container-fluid content p-3 px-4">
         <h2>Post List</h2>
         <table class="table">
             <thead>

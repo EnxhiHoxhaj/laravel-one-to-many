@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid content p-5">
+    <div class="container-fluid content p-3 px-4">
         <h1 class="n-txt">Crea nuovo post</h1>
         @if ($errors->any())
             <div class="alert alert-danger" role="alert">

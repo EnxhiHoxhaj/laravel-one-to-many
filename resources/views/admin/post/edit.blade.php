@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container-fluid content p-5">
+    <div class="container-fluid content p-3 px-4">
         <h1 class="n-txt">Modifica post</h1>
 
         <form class="form d-flex flex-column" action="{{ route('admin.posts.update', $edit_post) }}" method="POST"
