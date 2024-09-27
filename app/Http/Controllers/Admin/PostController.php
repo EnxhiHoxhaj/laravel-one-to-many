@@ -69,10 +69,9 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         $data = $request->all();
-        $post = Post::find($id);
 
         if($data['title'] === $post->title){
             $data ['slug']= $post->slug;
@@ -87,11 +86,9 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        $post= Post::all();
-        $post= Post:: find($id);
         $post-> delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('delete', 'Il post '. $post->title . 'è stato eliminato corettamente');
     }
 }

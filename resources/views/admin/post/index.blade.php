@@ -1,7 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid content p-3 px-4">
+
         <h2>Post List</h2>
+        @if (session('delete'))
+            <div class="alert alert-success">
+                {{ session('delete') }}
+            </div>
+        @endif
         <table class="table">
             <thead>
                 <tr>
