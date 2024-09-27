@@ -12,7 +12,7 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Accedi
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right drop" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-end drop" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item log" href="{{ route('login') }}">Login</a>
                                 <a class="dropdown-item log" href="{{ route('register') }}">Registrati</a>
                             </div>
@@ -23,7 +23,7 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right drop" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-end drop" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item log" href="{{ route('admin.home') }}">Admin</a>
                                 <a class="dropdown-item log" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
