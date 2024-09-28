@@ -28,6 +28,16 @@
                 @enderror
 
             </div>
+            <div>
+                <select name="" id="">
+
+                    @foreach ($categories as $category)
+                        <option>Segli una categoria</option>
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+
+                </select>
+            </div>
             <div class="col-md-4 py-4 d-flex flex-column txt">
                 <label for="validationCustom02" class="form-label">Contenuto</label>
                 <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="validationCustom02"
