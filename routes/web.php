@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Guest\PageController;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::middleware (['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('home');
+    Route::get('catrgory-post',[ CategoryController::class, 'categoryPost'])->name('categoryPost');
     Route::resource('posts', PostController::class);
 });
 
