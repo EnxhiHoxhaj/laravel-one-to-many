@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\Category;
 use Faker\Generator as Faker;
 
 class PostsSeeder extends Seeder
@@ -16,6 +17,7 @@ class PostsSeeder extends Seeder
     {
         for ($i = 0; $i < 200; $i++){
             Post::create([
+                'category_id'=> Category::inRandomOrder()->first()->id,
                 'title'=> $faker->sentence,
                 'slug'=> $faker->slug,
                 'content'=> $faker->paragraph,

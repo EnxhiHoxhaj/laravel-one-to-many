@@ -12,6 +12,10 @@ class Post extends Model
         'created_at'=>'datetime:d/m/Y',
     ];
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
     protected $fillable = [
             'title',
             'slug',
