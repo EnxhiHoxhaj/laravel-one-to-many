@@ -14,6 +14,7 @@
                     <th scope="col">#ID</th>
                     <th scope="col">Titolo</th>
                     <th scope="col">Contenuto</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Visite</th>
                     <th scope="col">Creato il</th>
                     <th scope="col">Visite</th>
@@ -30,6 +31,7 @@
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->content }}</td>
+                        <td>{{ $post->category->name }}</td>
                         <td>{{ $post->created_at->format('d/m/Y') }}</td>
                         <td>{{ $post->visit }}</td>
                         <td>{{ $post->positive_votes }}</td>
