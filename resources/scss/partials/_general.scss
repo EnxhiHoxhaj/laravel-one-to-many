@@ -92,3 +92,20 @@ label {
 th {
     color: rgb(0, 183, 255);
  }
+
+ .sh-ele {
+    color: gray;
+ }
+
+ .card {
+    border-radius: 15px;
+    border: solid rgb(0, 183, 255) 2px ;
+ }
+
+.pagination a, .pagination span{
+    color: gray;
+    &:hover{
+        background-color:#e5e5e5;
+        color: rgb(0, 183, 255);
+    }
+}

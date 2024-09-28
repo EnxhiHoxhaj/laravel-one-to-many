@@ -31,7 +31,7 @@
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->content }}</td>
-                        <td>{{ $post->category->name }}</td>
+                        <td>{{ $post->category?->name }}</td>
                         <td>{{ $post->created_at->format('d/m/Y') }}</td>
                         <td>{{ $post->visit }}</td>
                         <td>{{ $post->positive_votes }}</td>
