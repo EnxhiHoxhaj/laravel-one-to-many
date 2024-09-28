@@ -78,3 +78,17 @@ label {
         border-color:rgb(0, 183, 255);
     }
 }
+
+.bot {
+    background-color: transparent;
+    border-style: none;
+    color: gray;
+    font-size: 20px;
+    &:hover{
+        color: rgb(0, 183, 255);
+    }
+}
+
+th {
+    color: rgb(0, 183, 255);
+ }

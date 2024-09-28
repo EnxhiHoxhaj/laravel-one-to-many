@@ -31,7 +31,12 @@
                     <span class="card-text">{{ $post->slug }}</span>
                 </div>
 
-                <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Lista Posts</a>
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-primary add my-4">Lista Posts</a>
+
+                @include('admin.partials.formDelete', [
+                    'route' => route('admin.posts.destroy', $post),
+                    'message' => 'Confermi l\'eliminazione del post: {{ $post->title }}?',
+                ])
             </div>
         </div>
     </div>

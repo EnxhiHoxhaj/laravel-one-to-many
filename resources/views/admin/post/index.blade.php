@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid content p-3 px-4">
 
-        <h2>Post List</h2>
+        <h2 class="n-txt">Post List</h2>
         @if (session('delete'))
             <div class="alert alert-success">
                 {{ session('delete') }}
@@ -35,18 +35,16 @@
                         <td>{{ $post->positive_votes }}</td>
                         <td>{{ $post->negative_votes }}</td>
                         <td>{{ $post->created_at }}</td>
-                        <td><a href="{{ route('admin.posts.show', $post->id) }}"><i class="fa-regular fa-eye"></i></a></td>
-                        <td><a href="{{ route('admin.posts.edit', $post) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <td><a class="bot" href="{{ route('admin.posts.show', $post->id) }}"><i
+                                    class="fa-regular fa-eye"></i></a></td>
+                        <td><a class="bot" href="{{ route('admin.posts.edit', $post) }}"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                         <td>
-                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST"
-                                onsubmit="return confirm('Sicuro di voler eliminare il post?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
+                            @include('admin.partials.formDelete', [
+                                'route' => route('admin.posts.destroy', $post),
+                                'message' => 'Confermi l\'eliminazione del post: {{ $post->title }}?',
+                            ])
                         </td>
 
                     </tr>
