@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\category;
+use App\Models\Category;
 use App\Http\Requests\PostsRequest;
 use App\Functions\Helper;
 use Faker\Generator as Faker;
@@ -64,14 +64,15 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
+        $categories= Category::all();
         $edit_post= Post::find($id);
-        return view('admin.post.edit', compact('edit_post'));
+        return view('admin.post.edit', compact('edit_post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostsRequest $request, Post $post)
     {
         $data = $request->all();
 
