@@ -16,19 +16,24 @@
                 <button class="btn btn-success add my-4" type="submit">VAI</button>
             </div>
         </form>
-        <table class="table">
-            <tbody>
+        <table class="table category-list">
+            <tbody class="table">
                 @foreach ($categories as $category)
                     <tr>
                         <td>
-                            <form action="{{ route('admin.categories.update', $category) }}" method="POST">
+                            <form action="{{ route('admin.categories.update', $category) }}" method="POST"
+                                id='form-edit-{{ $category->id }}'>
                                 @csrf
                                 @method('PUT')
-                                <input type="text" name="name" value=" {{ $category->name }}">
+                                <input class="edit" type="text" name="name" value=" {{ $category->name }}">
                             </form>
 
                         </td>
-                        <td>INVA</td>
+                        <td>
+                            <button class="btn btn-success add my-4" type="submit"
+                                onclick="editCategorySubmit({{ $category->id }})">Aggiorna
+                            </button>
+                        </td>
                         <td>
                             @include('admin.partials.formDelete', [
                                 'route' => route('admin.categories.destroy', $category),
@@ -41,4 +46,11 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        function editCategorySubmit(id) {
+            const form = document.getElementById('form-edit-${id}')
+            form.submit();
+        }
+    </script>
 @endsection
