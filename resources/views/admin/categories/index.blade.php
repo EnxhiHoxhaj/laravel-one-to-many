@@ -29,7 +29,13 @@
 
                         </td>
                         <td>INVA</td>
-                        <td>ELIMINA</td>
+                        <td>
+                            @include('admin.partials.formDelete', [
+                                'route' => route('admin.categories.destroy', $category),
+                                'message' => 'Confermi l\'eliminazione del post: {{ $category->name }}?',
+                            ])
+                            ELIMINA
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
