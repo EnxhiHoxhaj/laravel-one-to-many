@@ -20,7 +20,14 @@
             <tbody>
                 @foreach ($categories as $category)
                     <tr>
-                        <td>{{ $category->name }}: MODIFICA</td>
+                        <td>
+                            <form action="{{ route('admin.categories.update', $category) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="text" name="name" value=" {{ $category->name }}">
+                            </form>
+
+                        </td>
                         <td>INVA</td>
                         <td>ELIMINA</td>
                     </tr>
