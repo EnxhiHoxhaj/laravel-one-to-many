@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-fluid d-flex justify-content-center align-items-center content">
-        <div class="card pers" style="width: 18rem;">
+        <div class="card pers" style="width: 25rem;">
             <div class="card-body">
                 <div class="p-1">
                     <h5 class="card-title"><strong>Titolo: </strong>{{ $post->title }}</h5>
