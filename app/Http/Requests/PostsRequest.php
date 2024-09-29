@@ -23,7 +23,8 @@ class PostsRequest extends FormRequest
     {
         return [
             'title'=>'required | max:100',
-            'content'=>'required',
+            'content'=>'required|string',
+            // 'category_id'=>'required',
             'updated_at' => now(),
         ];
     }
@@ -42,6 +43,7 @@ class PostsRequest extends FormRequest
             'title.string'=>'Il titolo deve essere una stringa',
             'title.max'=>'Il titolo non può superare i :max caratteri',
             'content.required'=>'Il contenuto è obligatorio',
+            // 'category_id.required'=>'Indicare una categoria'
         ];
     }
 }

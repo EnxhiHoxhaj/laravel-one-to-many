@@ -38,13 +38,12 @@ class PostController extends Controller
 
         $data= $request->all();
         $new_post= new Post();
-        $new_post->slug = Helper::generateSlug($new_post->title, Post::class);
+        $data['slug'] = Helper::generateSlug($data ['title'], Post::class);
         $new_post->visit= $faker->numberBetween(0, 0);
         $new_post->positive_votes= $faker ->numberBetween(0, 0);
         $new_post->negative_votes= $faker ->numberBetween(0, 0);
-        $new_post->created_at = $faker->dateTimeBetween('-1 year', 'now');
+        $new_post->created_at = now();
         $new_post->updated_at = now();
-
         $new_post-> fill($data);
         $new_post->save();
         return redirect()->route('admin.posts.show', $new_post ->id);

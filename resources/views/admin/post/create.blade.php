@@ -29,13 +29,15 @@
 
             </div>
             <div>
-                <select name="" id="">
-
+                <label for="category" class="form-label">
+                    Categoria
+                </label>
+                <select class="form-select" aria-label="Defaulte select exemple" id="category" name="category_id">
+                    <option value="" selected>Segli una categoria</option>
                     @foreach ($categories as $category)
-                        <option>Segli una categoria</option>
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}" @if (old('category_id') == $category->id) selected @endif>
+                            {{ $category->name }}</option>
                     @endforeach
-
                 </select>
             </div>
             <div class="col-md-4 py-4 d-flex flex-column txt">

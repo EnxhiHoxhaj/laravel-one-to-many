@@ -28,8 +28,8 @@
                 @enderror
             </div>
             <div>
-                <select name="category_id" class="form-select" aria-label="Defaulte select exemple" id="category">
-                    <option>Segli una categoria</option>
+                <select class="form-select" aria-label="Defaulte select exemple" id="category">
+                    <option name="category_id">Segli una categoria</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->name }}">{{ $category->name }}</option>
                     @endforeach
